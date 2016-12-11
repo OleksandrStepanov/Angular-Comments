@@ -3,7 +3,7 @@ var app = angular.module("app", []);
 app.controller("AddThemeForCommentCtrl", function AddThemeForCommentCtrl ($scope) {
 
     $scope.saved = localStorage.getItem('themes');
-    $scope.themes = (localStorage.getItem('themes')!=="") ? JSON.parse($scope.saved) : [];
+    $scope.themes = (localStorage.getItem('themes')!=="null") ? JSON.parse($scope.saved) : [];
     localStorage.setItem('themes', JSON.stringify($scope.themes));
 
     $scope.addTheme = function() {
