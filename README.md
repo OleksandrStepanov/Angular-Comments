@@ -1,2 +1,1 @@
-# Angular-Comments
-Add new themes and comments
+https://oleksandrstepanov.github.io/Angular-Comments/
