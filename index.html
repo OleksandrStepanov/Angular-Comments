@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.5.0/angular-local-storage.min.js"></script>
+</head>
+<body>
+	<div class="container" ng-controller="AddThemeForCommentCtrl">
+		<div class="main">
+			<h1>Main</h1>
+			<h4 class="view-all">Overview</h4>
+		</div>
+		<div class="main-info">
+			<div class="items">
+				<h1>Items</h1>
+				<form ng-submit="addTheme()" class="form-add-theme">
+					<input type="text" id="input-theme" ng-model="todoText" placeholder="Type name here..." />
+					<input type="submit" id="add-theme-button" value="Add new" />
+				</form>
+				<p ng-repeat="theme in themes" ng-click="select($index)"
+				   	ng-class="{active: $index===selectedIndex}">{{theme.text}}<span>{{theme.comment.length}}</span>
+					<button class="del" ng-click="delTheme(selectedIndex)">Delete</button>
+				</p>
+			</div>
+			<div class="comments">
+				<h1>Comments<span> #{{selectedIndex+1}}</span></h1>
+				<div class="odd-even clearfix" ng-repeat="item in themes[selectedIndex].comment">
+						<p ng-class-odd="'odd'" class="square" ng-class-even="'even'" class="square"></p>
+						<h6>{{item}}</h6>
+				</div>
+				<form ng-submit="addComment()" class="form-add-comment">
+					<textarea class="input-area" ng-model="newComment"></textarea>
+					<input type="submit" class="add-comment-button square" value=""/>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="js/main.js"></script>
+</body>
+</html>
